@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crunch & Munch | Galletas Artesanales</title>
+  <title>Crunch & Munch | App</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,148 +13,145 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN -->
-  <nav class="navbar">
-    <div class="logo-container">
-      <img src="logo.jpg" alt="Crunch & Munch Logo" class="brand-logo">
-      <span class="logo-text">Crunch <span>& Munch</span></span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#hero">Inicio</a></li>
-      <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#recompensas">Mis Sellos 🎁</a></li>
-      <li><a href="#sabores">Sugerir Sabor</a></li>
-      <li><a href="#admin" onclick="openAdminModal()">⚙️ Admin</a></li>
-    </ul>
-    <button id="cart-btn" class="cart-btn">
-      🛒 Carrito <span id="cart-count">0</span>
-    </button>
-  </nav>
+  <!-- PANTALLA DE INICIO DE SESIÓN OBLIGATORIO -->
+  <div id="login-overlay" class="login-overlay">
+    <div class="login-card">
+      <img src="logo.jpg" alt="Crunch & Munch Logo" class="login-logo">
+      <h2>¡Bienvenido a Crunch & Munch! 🍪</h2>
+      <p>Ingresa tus datos para entrar a la app y acumular sellos.</p>
 
-  <!-- SECCIÓN PRINCIPAL -->
-  <header id="hero" class="hero">
-    <div class="hero-content">
-      <span class="badge">¡Horneadas en el coto! 🍪</span>
-      <h1>Las galletas más crujientes y deliciosas</h1>
-      <p>Pide tus favoritas en segundos, acumula sellos digitales y gana una cajita de galletas gratis.</p>
-      <div class="hero-btns">
-        <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
-        <a href="#recompensas" class="btn-secondary">Tarjeta de Sellos</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="logo.jpg" alt="Mascota Crunch & Munch" class="hero-cookie-logo">
-    </div>
-  </header>
-
-  <!-- CATÁLOGO DE PRODUCTOS -->
-  <section id="catalogo" class="section">
-    <h2 class="section-title">Nuestras Galletas</h2>
-    <p class="section-subtitle">Selecciona tus favoritas y agrégalas al carrito</p>
-    
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-badge">Top Ventas</div>
-        <img src="logo.jpg" class="product-img-real" alt="Galleta">
-        <h3>Clásica Chocochips</h3>
-        <p>Masa suave con generosas chispas de chocolate semi-amargo.</p>
-        <span class="price">$35 MXN</span>
-        <button class="btn-add" onclick="addToCart('Clásica Chocochips', 35)">Agregar al Carrito</button>
-      </div>
-
-      <div class="product-card">
-        <img src="logo.jpg" class="product-img-real" alt="Galleta">
-        <h3>Doble Chocolate</h3>
-        <p>Masa de cacao intenso cargada con trozos de chocolate blanco.</p>
-        <span class="price">$40 MXN</span>
-        <button class="btn-add" onclick="addToCart('Doble Chocolate', 40)">Agregar al Carrito</button>
-      </div>
-
-      <div class="product-card">
-        <div class="product-badge gold">Combo</div>
-        <img src="logo.jpg" class="product-img-real" alt="Galleta">
-        <h3>Caja Sorpresa (6 pzs)</h3>
-        <p>Surtido de nuestros 3 mejores sabores horneados al día.</p>
-        <span class="price">$200 MXN</span>
-        <button class="btn-add" onclick="addToCart('Caja Sorpresa (6 pzs)', 200)">Agregar al Carrito</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- TARJETA DE SELLOS DEL CLIENTE -->
-  <section id="recompensas" class="section rewards-section">
-    <h2 class="section-title">Tarjeta de Cliente Frecuente</h2>
-    <p class="section-subtitle">¡Junta 10 sellos y recibe una Cajita Sorpresa GRATIS!</p>
-
-    <div class="client-auth-box">
-      <p>Ingresa tu número de WhatsApp para ver tu tarjeta de sellos:</p>
-      <div class="auth-inputs">
-        <input type="tel" id="client-phone" placeholder="Ej. 3310677989">
-        <button class="btn-primary" onclick="loginClient()">Ver mi Tarjeta</button>
-      </div>
-    </div>
-
-    <div class="card-wrapper">
-      <div class="real-card-container">
-        <!-- AQUÍ SE USA TU IMAGEN REAL TARJETA.PNG -->
-        <img src="tarjeta.png" alt="Tarjeta Oficial Crunch & Munch" class="real-card-bg">
-        
-        <!-- SOBRE ESTA IMAGEN SE COLOCARÁN LOS SELLOS AUTOMÁTICAMENTE -->
-        <div class="stamps-overlay" id="stamps-grid"></div>
-      </div>
-      <p id="stamps-status-text" class="stamps-status-large">Ingresa tu teléfono arriba para ver tus sellos (0 / 10)</p>
-    </div>
-  </section>
-
-  <!-- SUGERENCIA DE SABORES -->
-  <section id="sabores" class="section">
-    <h2 class="section-title">¿Qué sabor te gustaría probar?</h2>
-    <p class="section-subtitle">Tus ideas nos ayudan a crear la siguiente receta</p>
-
-    <div class="flavor-container">
-      <form id="flavor-form" class="flavor-form">
-        <input type="text" id="flavor-input" placeholder="Ej. Red Velvet con Nutella" required>
-        <button type="submit" class="btn-primary">Enviar Idea</button>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <input type="text" id="user-name-input" placeholder="Tu Nombre completo" required>
+        <input type="tel" id="user-phone-input" placeholder="Tu número de WhatsApp" required>
+        <button type="submit" class="btn-primary btn-block">Entrar a la App</button>
       </form>
-      <div class="votes-list" id="votes-list">
-        <h4>Ideas de la comunidad:</h4>
-        <ul>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL DE LA APP -->
+  <div id="app-content" class="app-content" style="display: none;">
+
+    <!-- NAVEGACIÓN SUPERIOR -->
+    <header class="app-header">
+      <div class="user-greeting">
+        <img src="logo.jpg" alt="Perfil" class="header-avatar">
+        <div>
+          <small>Bienvenido de vuelta,</small>
+          <h3 id="display-user-name">Usuario</h3>
+        </div>
+      </div>
+      <button class="cart-badge-btn" onclick="switchTab('tab-carrito')">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </header>
+
+    <!-- BANNER DESTACADO -->
+    <div class="hero-banner">
+      <div class="banner-text">
+        <span class="badge">¡Horneadas en el coto!</span>
+        <h2>Galletas recién salidas del horno 🔥</h2>
+      </div>
+    </div>
+
+    <!-- PESTAÑA 1: INICIO Y CATÁLOGO -->
+    <main id="tab-inicio" class="app-tab active">
+      <h3 class="section-title">Nuestro Catálogo</h3>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="logo.jpg" class="product-img-real" alt="Galleta">
+          <h4>Clásica Chocochips</h4>
+          <p>Masa suave con generosas chispas de chocolate semi-amargo.</p>
+          <span class="price">$35 MXN</span>
+          <button class="btn-add" onclick="addToCart('Clásica Chocochips', 35)">Agregar 🛒</button>
+        </div>
+
+        <div class="product-card">
+          <img src="logo.jpg" class="product-img-real" alt="Galleta">
+          <h4>Doble Chocolate</h4>
+          <p>Masa de cacao intenso cargada con trozos de chocolate blanco.</p>
+          <span class="price">$40 MXN</span>
+          <button class="btn-add" onclick="addToCart('Doble Chocolate', 40)">Agregar 🛒</button>
+        </div>
+
+        <div class="product-card">
+          <img src="logo.jpg" class="product-img-real" alt="Galleta">
+          <h4>Caja Sorpresa (6 pzs)</h4>
+          <p>Surtido de nuestros 3 mejores sabores horneados al día.</p>
+          <span class="price">$200 MXN</span>
+          <button class="btn-add" onclick="addToCart('Caja Sorpresa (6 pzs)', 200)">Agregar 🛒</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- PESTAÑA 2: RECOMENDAR SABORES -->
+    <main id="tab-sabores" class="app-tab">
+      <h3 class="section-title">¿Qué sabor te gustaría probar?</h3>
+      <p class="subtitle">Escribe tu idea y te llegará la sugerencia a Crunch & Munch.</p>
+
+      <form id="flavor-form" class="flavor-form" onsubmit="submitFlavor(event)">
+        <input type="text" id="flavor-input" placeholder="Ej. Red Velvet con Nutella" required>
+        <button type="submit" class="btn-primary btn-block">Enviar Sugerencia 📩</button>
+      </form>
+
+      <div class="votes-list">
+        <h4>Sugerencias populares:</h4>
+        <ul id="flavor-list">
           <li>Lotus Biscoff Crisp <span>🔥 12 votos</span></li>
           <li>Matcha & Chocolate Blanco <span>🔥 8 votos</span></li>
         </ul>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <!-- PANEL DE ADMINISTRADOR (DONDE TÚ PONES LOS SELLOS) -->
-  <div id="admin-modal" class="cart-modal">
-    <div class="cart-content admin-box">
-      <span class="close-btn" onclick="closeAdminModal()">&times;</span>
-      <h2>⚙️ Panel de Control Administrador</h2>
-      <p>Agrega sellos a tus clientes registrados:</p>
-
-      <div id="admin-clients-list" class="admin-clients-list">
-        <!-- Lista de clientes -->
-      </div>
-    </div>
-  </div>
-
-  <!-- CARRITO DE COMPRAS -->
-  <div id="cart-modal" class="cart-modal">
-    <div class="cart-content">
-      <span id="close-cart" class="close-btn">&times;</span>
-      <h2>Tu Carrito 🛒</h2>
-      <div id="cart-items" class="cart-items">
+    <!-- PESTAÑA 3: CARRITO DE COMPRAS -->
+    <main id="tab-carrito" class="app-tab">
+      <h3 class="section-title">Tu Pedido 🛒</h3>
+      <div id="cart-items" class="cart-items-container">
         <p class="empty-msg">Tu carrito está vacío</p>
       </div>
       <div class="cart-summary">
         <div class="total-row">
-          <span>Total:</span>
+          <span>Total a pagar:</span>
           <span id="cart-total">$0 MXN</span>
         </div>
-        <button id="checkout-btn" class="btn-primary btn-block" onclick="processCheckout()">Confirmar Pedido</button>
+        <button class="btn-primary btn-block" onclick="processCheckout()">Confirmar Pedido y Enviar Correo</button>
       </div>
-    </div>
+    </main>
+
+    <!-- PESTAÑA 4: PERFIL Y SELLOS DIGITALES -->
+    <main id="tab-perfil" class="app-tab">
+      <h3 class="section-title">Mi Tarjeta de Recompensas 🎁</h3>
+
+      <div class="card-wrapper">
+        <div class="real-card-container">
+          <img src="tarjeta.png" alt="Tarjeta Oficial" class="real-card-bg">
+          <div class="stamps-overlay" id="stamps-grid">
+            <!-- Sellos generados por JS -->
+          </div>
+        </div>
+        <p id="stamps-status-text" class="stamps-status-large">Tienes 0 / 10 Sellos</p>
+      </div>
+    </main>
+
+    <!-- BARRA DE NAVEGACIÓN INFERIOR (TIPO APP) -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchTab('tab-inicio', this)">
+        <span>🏠</span>
+        <small>Inicio</small>
+      </button>
+      <button class="nav-item" onclick="switchTab('tab-sabores', this)">
+        <span>💡</span>
+        <small>Sabores</small>
+      </button>
+      <button class="nav-item" onclick="switchTab('tab-carrito', this)">
+        <span>🛒</span>
+        <small>Carrito</small>
+      </button>
+      <button class="nav-item" onclick="switchTab('tab-perfil', this)">
+        <span>👤</span>
+        <small>Mi Perfil</small>
+      </button>
+    </nav>
+
   </div>
 
   <script src="script.js"></script>
