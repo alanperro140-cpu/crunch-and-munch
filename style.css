@@ -1,77 +1,126 @@
 :root {
-  --primary-blue: #0038FF;
-  --dark-blue: #0022a1;
+  --blue-bg: #0038FF;
+  --dark-blue: #0026B3;
   --gold: #FFD700;
+  --gold-hover: #E6C200;
   --chocolate: #3E2723;
-  --bg-light: #F4F7FF;
   --white: #FFFFFF;
   --font-heading: 'Fredoka', sans-serif;
   --font-body: 'Montserrat', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); background-color: var(--bg-light); color: #333; padding-bottom: 70px; }
+
+body.blue-theme {
+  font-family: var(--font-body);
+  background-color: var(--blue-bg);
+  color: #333;
+  padding-bottom: 80px;
+}
 
 /* OVERLAY LOGIN */
 .login-overlay {
-  position: fixed; inset: 0; background: var(--primary-blue);
+  position: fixed; inset: 0; background: var(--blue-bg);
   display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
 }
 .login-card {
-  background: white; padding: 30px; border-radius: 25px; text-align: center; max-width: 400px; width: 100%;
+  background: var(--white); padding: 35px 25px; border-radius: 30px; text-align: center; max-width: 420px; width: 100%;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
-.login-logo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--gold); }
-.login-card input { width: 100%; padding: 12px 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #ccc; outline: none; }
+.login-logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--gold); }
+.login-card h2 { font-family: var(--font-heading); font-size: 28px; color: var(--blue-bg); }
+.login-sub { font-size: 14px; color: #666; margin-bottom: 25px; }
 
-/* HEADER APP */
+.input-group { text-align: left; margin-bottom: 15px; }
+.input-group label { font-size: 13px; font-weight: 700; color: #444; display: block; margin-bottom: 5px; }
+.input-group input, .input-group select, .input-group textarea {
+  width: 100%; padding: 12px 15px; border-radius: 15px; border: 2px solid #E0E0E0; font-size: 15px; outline: none; font-family: var(--font-body);
+}
+
+/* HEADER */
 .app-header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 15px 5%; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 15px 6%; background: var(--white); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin-bottom: 20px;
 }
-.user-greeting { display: flex; align-items: center; gap: 10px; }
-.header-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-blue); }
-.cart-badge-btn { background: var(--gold); border: none; padding: 8px 15px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+.user-greeting { display: flex; align-items: center; gap: 12px; }
+.header-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+.user-greeting small { color: #777; font-size: 12px; }
+.user-greeting h3 { font-family: var(--font-heading); color: var(--blue-bg); font-size: 20px; }
+.cart-badge-btn { background: var(--gold); border: none; padding: 10px 18px; border-radius: 25px; font-weight: 800; cursor: pointer; color: var(--chocolate); }
 
-/* BANNER */
+/* HERO BANNER */
 .hero-banner {
-  background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-  color: white; margin: 15px 5%; padding: 25px; border-radius: 20px;
+  background: var(--dark-blue); color: white; margin: 0 5% 25px 5%; padding: 25px; border-radius: 25px; text-align: center;
+  border: 2px solid rgba(255,255,255,0.2);
 }
-.badge { background: var(--gold); color: var(--chocolate); padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+.badge-gold { background: var(--gold); color: var(--chocolate); padding: 5px 12px; border-radius: 12px; font-weight: 800; font-size: 11px; }
+.hero-banner h2 { font-family: var(--font-heading); font-size: 26px; margin: 10px 0 5px 0; }
 
-/* PESTAÑAS Y CONTENIDO */
-.app-tab { display: none; padding: 0 5% 20px 5%; }
+/* PRODUCTOS Y GRILLAS */
+.app-tab { display: none; padding: 0 5%; }
 .app-tab.active { display: block; }
-.section-title { font-family: var(--font-heading); color: var(--primary-blue); font-size: 24px; margin-bottom: 15px; }
+.section-title-white { font-family: var(--font-heading); color: white; font-size: 26px; margin-bottom: 15px; }
 
-/* PRODUCTOS */
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-.product-card { background: white; padding: 15px; border-radius: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.product-img-real { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
-.price { font-size: 18px; font-weight: 800; color: var(--primary-blue); display: block; margin: 10px 0; }
-.btn-add { background: var(--primary-blue); color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.product-card {
+  background: var(--white); padding: 20px; border-radius: 25px; text-align: center; position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: space-between;
+}
+.product-img-box img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
+.card-tag { position: absolute; top: 15px; right: 15px; background: var(--gold); color: var(--chocolate); font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px; }
+.product-card h4 { font-family: var(--font-heading); font-size: 20px; color: var(--blue-bg); margin-bottom: 6px; }
+.product-card p { font-size: 13px; color: #666; margin-bottom: 15px; }
+.price { font-size: 22px; font-weight: 900; color: var(--blue-bg); margin-bottom: 12px; }
+
+/* BOTONES */
+.btn-primary { background: var(--blue-bg); color: white; border: none; padding: 12px; border-radius: 18px; font-weight: 800; cursor: pointer; width: 100%; }
+.btn-gold { background: var(--gold); color: var(--chocolate); border: none; padding: 14px; border-radius: 20px; font-weight: 800; cursor: pointer; font-size: 15px; }
+.btn-block { width: 100%; }
+
+/* TARJETAS ANCHAS DE CONTENIDO (SABORES, CARRITO, PERFIL) */
+.wide-card {
+  background: var(--white); padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 25px;
+}
+.wide-card h2 { font-family: var(--font-heading); color: var(--blue-bg); font-size: 26px; margin-bottom: 10px; }
+.wide-card-desc { font-size: 14px; color: #666; margin-bottom: 20px; }
+
+/* SECCIÓN SABORES LIMPIA */
+.flavor-form-wide { margin-bottom: 30px; }
+.submitted-flavors-section h3 { font-size: 16px; color: var(--blue-bg); margin-bottom: 12px; }
+.flavor-list-clean { list-style: none; }
+.flavor-list-clean li { padding: 12px 15px; background: #F4F6FB; border-radius: 12px; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #333; }
+.empty-list-msg { color: #888 !important; font-style: italic; font-weight: 400 !important; }
+
+/* CARRITO Y OPCIONES DE PAGO */
+.cart-items-list { margin: 20px 0; }
+.cart-item-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #EEE; font-weight: 700; }
+.total-row { display: flex; justify-content: space-between; font-size: 20px; font-weight: 900; color: var(--blue-bg); margin: 20px 0; }
+
+.payment-selection-box { background: #F8F9FE; padding: 20px; border-radius: 20px; margin-bottom: 20px; text-align: left; }
+.payment-selection-box h3 { font-size: 15px; color: var(--blue-bg); margin-bottom: 12px; }
+.payment-options { display: flex; gap: 15px; margin-bottom: 15px; }
+.payment-option { flex: 1; background: white; padding: 12px; border-radius: 12px; border: 2px solid #DDD; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; cursor: pointer; }
 
 /* TARJETA SELLOS */
-.card-wrapper { max-width: 500px; margin: 20px auto; text-align: center; }
-.real-card-container { position: relative; width: 100%; border-radius: 15px; overflow: hidden; }
+.text-center { text-align: center; }
+.card-wrapper { max-width: 500px; margin: 20px auto; }
+.real-card-container { position: relative; width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 .real-card-bg { width: 100%; display: block; }
 .stamps-overlay {
   position: absolute; top: 52%; left: 12%; width: 53%; height: 38%;
   display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 4px;
 }
 .stamp-slot { display: flex; align-items: center; justify-content: center; }
-.stamp-slot.active::after { content: "🍪"; font-size: 20px; }
-.stamps-status-large { margin-top: 15px; font-weight: 700; color: var(--primary-blue); }
+.stamp-slot.active::after { content: "🍪"; font-size: 22px; }
+.stamps-status-large { margin-top: 20px; font-family: var(--font-heading); color: var(--blue-bg); font-size: 20px; }
 
-/* BARRA INFERIOR (BOTTOM NAV) */
+/* BOTTOM NAV */
 .bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  height: 60px; background: white; border-top: 1px solid #eee;
-  display: flex; justify-content: space-around; align-items: center; z-index: 500;
+  position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: var(--white);
+  display: flex; justify-content: space-around; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 500;
 }
 .nav-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #888; cursor: pointer; }
-.nav-item.active { color: var(--primary-blue); font-weight: 700; }
-.nav-item span { font-size: 20px; }
-
-.btn-primary { background: var(--gold); color: var(--chocolate); border: none; padding: 12px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; }
-.btn-block { width: 100%; }
+.nav-item.active { color: var(--blue-bg); font-weight: 800; }
+.nav-icon { font-size: 22px; }
