@@ -13,9 +13,10 @@
 </head>
 <body>
 
-  <!-- NAVEGACIÓN -->
+  <!-- BARRA DE NAVEGACIÓN -->
   <nav class="navbar">
     <div class="logo-container">
+      <img src="logo.jpg" alt="Crunch & Munch Logo" class="brand-logo">
       <span class="logo-text">Crunch <span>& Munch</span></span>
     </div>
     <ul class="nav-links">
@@ -23,25 +24,26 @@
       <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#recompensas">Mis Sellos 🎁</a></li>
       <li><a href="#sabores">Sugerir Sabor</a></li>
+      <li><a href="#admin" onclick="openAdminModal()">⚙️ Admin</a></li>
     </ul>
     <button id="cart-btn" class="cart-btn">
       🛒 Carrito <span id="cart-count">0</span>
     </button>
   </nav>
 
-  <!-- HÉROE PRINCIPAL -->
+  <!-- SECCIÓN PRINCIPAL -->
   <header id="hero" class="hero">
     <div class="hero-content">
       <span class="badge">¡Horneadas en el coto! 🍪</span>
       <h1>Las galletas más crujientes y deliciosas</h1>
-      <p>Pide tus favoritas en segundos, acumula sellos y recibe recompensas sorpresa.</p>
+      <p>Pide tus favoritas en segundos, acumula sellos digitales y gana una cajita de galletas gratis.</p>
       <div class="hero-btns">
         <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
         <a href="#recompensas" class="btn-secondary">Tarjeta de Sellos</a>
       </div>
     </div>
     <div class="hero-image">
-      <div class="cookie-character">🍪</div>
+      <img src="logo.jpg" alt="Mascota Crunch & Munch" class="hero-cookie-logo">
     </div>
   </header>
 
@@ -53,7 +55,7 @@
     <div class="products-grid">
       <div class="product-card">
         <div class="product-badge">Top Ventas</div>
-        <div class="product-img">🍪</div>
+        <img src="logo.jpg" class="product-img-real" alt="Galleta">
         <h3>Clásica Chocochips</h3>
         <p>Masa suave con generosas chispas de chocolate semi-amargo.</p>
         <span class="price">$35 MXN</span>
@@ -61,16 +63,16 @@
       </div>
 
       <div class="product-card">
-        <div class="product-img">🍫</div>
+        <img src="logo.jpg" class="product-img-real" alt="Galleta">
         <h3>Doble Chocolate</h3>
-        <p>Masa de cacao inteso cargada con trozos de chocolate blanco.</p>
+        <p>Masa de cacao intenso cargada con trozos de chocolate blanco.</p>
         <span class="price">$40 MXN</span>
         <button class="btn-add" onclick="addToCart('Doble Chocolate', 40)">Agregar al Carrito</button>
       </div>
 
       <div class="product-card">
         <div class="product-badge gold">Combo</div>
-        <div class="product-img">📦</div>
+        <img src="logo.jpg" class="product-img-real" alt="Galleta">
         <h3>Caja Sorpresa (6 pzs)</h3>
         <p>Surtido de nuestros 3 mejores sabores horneados al día.</p>
         <span class="price">$200 MXN</span>
@@ -79,22 +81,28 @@
     </div>
   </section>
 
-  <!-- SECCIÓN DE RECOMPENSAS / SELLOS DIGITALES -->
+  <!-- TARJETA DE SELLOS DEL CLIENTE -->
   <section id="recompensas" class="section rewards-section">
     <h2 class="section-title">Tarjeta de Cliente Frecuente</h2>
     <p class="section-subtitle">¡Junta 10 sellos y recibe una Cajita Sorpresa GRATIS!</p>
 
-    <div class="rewards-card">
-      <div class="rewards-header">
-        <h3>Tus Sellos Acumulados</h3>
-        <span id="stamps-count-text" class="stamps-status">6 de 10 Sellos</span>
+    <div class="client-auth-box">
+      <p>Ingresa tu número de WhatsApp para ver tu tarjeta de sellos:</p>
+      <div class="auth-inputs">
+        <input type="tel" id="client-phone" placeholder="Ej. 3310677989">
+        <button class="btn-primary" onclick="loginClient()">Ver mi Tarjeta</button>
       </div>
+    </div>
 
-      <div class="stamps-grid" id="stamps-grid">
-        <!-- Generado por JavaScript -->
+    <div class="card-wrapper">
+      <div class="real-card-container">
+        <!-- AQUÍ SE USA TU IMAGEN REAL TARJETA.PNG -->
+        <img src="tarjeta.png" alt="Tarjeta Oficial Crunch & Munch" class="real-card-bg">
+        
+        <!-- SOBRE ESTA IMAGEN SE COLOCARÁN LOS SELLOS AUTOMÁTICAMENTE -->
+        <div class="stamps-overlay" id="stamps-grid"></div>
       </div>
-
-      <p class="rewards-info">✨ Recibes 1 sello digital por cada compra participante.</p>
+      <p id="stamps-status-text" class="stamps-status-large">Ingresa tu teléfono arriba para ver tus sellos (0 / 10)</p>
     </div>
   </section>
 
@@ -118,7 +126,20 @@
     </div>
   </section>
 
-  <!-- MODAL DE CARRITO DE COMPRAS -->
+  <!-- PANEL DE ADMINISTRADOR (DONDE TÚ PONES LOS SELLOS) -->
+  <div id="admin-modal" class="cart-modal">
+    <div class="cart-content admin-box">
+      <span class="close-btn" onclick="closeAdminModal()">&times;</span>
+      <h2>⚙️ Panel de Control Administrador</h2>
+      <p>Agrega sellos a tus clientes registrados:</p>
+
+      <div id="admin-clients-list" class="admin-clients-list">
+        <!-- Lista de clientes -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRITO DE COMPRAS -->
   <div id="cart-modal" class="cart-modal">
     <div class="cart-content">
       <span id="close-cart" class="close-btn">&times;</span>
@@ -131,7 +152,7 @@
           <span>Total:</span>
           <span id="cart-total">$0 MXN</span>
         </div>
-        <button id="checkout-btn" class="btn-primary btn-block">Confirmar Pedido</button>
+        <button id="checkout-btn" class="btn-primary btn-block" onclick="processCheckout()">Confirmar Pedido</button>
       </div>
     </div>
   </div>
