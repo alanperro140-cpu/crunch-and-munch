@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crunch & Munch | Galletas Artesanales</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <span class="logo-text">Crunch <span>& Munch</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#recompensas">Mis Sellos 🎁</a></li>
+      <li><a href="#sabores">Sugerir Sabor</a></li>
+    </ul>
+    <button id="cart-btn" class="cart-btn">
+      🛒 Carrito <span id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <!-- HÉROE PRINCIPAL -->
+  <header id="hero" class="hero">
+    <div class="hero-content">
+      <span class="badge">¡Horneadas en el coto! 🍪</span>
+      <h1>Las galletas más crujientes y deliciosas</h1>
+      <p>Pide tus favoritas en segundos, acumula sellos y recibe recompensas sorpresa.</p>
+      <div class="hero-btns">
+        <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+        <a href="#recompensas" class="btn-secondary">Tarjeta de Sellos</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="cookie-character">🍪</div>
+    </div>
+  </header>
+
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <section id="catalogo" class="section">
+    <h2 class="section-title">Nuestras Galletas</h2>
+    <p class="section-subtitle">Selecciona tus favoritas y agrégalas al carrito</p>
+    
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-badge">Top Ventas</div>
+        <div class="product-img">🍪</div>
+        <h3>Clásica Chocochips</h3>
+        <p>Masa suave con generosas chispas de chocolate semi-amargo.</p>
+        <span class="price">$35 MXN</span>
+        <button class="btn-add" onclick="addToCart('Clásica Chocochips', 35)">Agregar al Carrito</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">🍫</div>
+        <h3>Doble Chocolate</h3>
+        <p>Masa de cacao inteso cargada con trozos de chocolate blanco.</p>
+        <span class="price">$40 MXN</span>
+        <button class="btn-add" onclick="addToCart('Doble Chocolate', 40)">Agregar al Carrito</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge gold">Combo</div>
+        <div class="product-img">📦</div>
+        <h3>Caja Sorpresa (6 pzs)</h3>
+        <p>Surtido de nuestros 3 mejores sabores horneados al día.</p>
+        <span class="price">$200 MXN</span>
+        <button class="btn-add" onclick="addToCart('Caja Sorpresa (6 pzs)', 200)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE RECOMPENSAS / SELLOS DIGITALES -->
+  <section id="recompensas" class="section rewards-section">
+    <h2 class="section-title">Tarjeta de Cliente Frecuente</h2>
+    <p class="section-subtitle">¡Junta 10 sellos y recibe una Cajita Sorpresa GRATIS!</p>
+
+    <div class="rewards-card">
+      <div class="rewards-header">
+        <h3>Tus Sellos Acumulados</h3>
+        <span id="stamps-count-text" class="stamps-status">6 de 10 Sellos</span>
+      </div>
+
+      <div class="stamps-grid" id="stamps-grid">
+        <!-- Generado por JavaScript -->
+      </div>
+
+      <p class="rewards-info">✨ Recibes 1 sello digital por cada compra participante.</p>
+    </div>
+  </section>
+
+  <!-- SUGERENCIA DE SABORES -->
+  <section id="sabores" class="section">
+    <h2 class="section-title">¿Qué sabor te gustaría probar?</h2>
+    <p class="section-subtitle">Tus ideas nos ayudan a crear la siguiente receta</p>
+
+    <div class="flavor-container">
+      <form id="flavor-form" class="flavor-form">
+        <input type="text" id="flavor-input" placeholder="Ej. Red Velvet con Nutella" required>
+        <button type="submit" class="btn-primary">Enviar Idea</button>
+      </form>
+      <div class="votes-list" id="votes-list">
+        <h4>Ideas de la comunidad:</h4>
+        <ul>
+          <li>Lotus Biscoff Crisp <span>🔥 12 votos</span></li>
+          <li>Matcha & Chocolate Blanco <span>🔥 8 votos</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE CARRITO DE COMPRAS -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-content">
+      <span id="close-cart" class="close-btn">&times;</span>
+      <h2>Tu Carrito 🛒</h2>
+      <div id="cart-items" class="cart-items">
+        <p class="empty-msg">Tu carrito está vacío</p>
+      </div>
+      <div class="cart-summary">
+        <div class="total-row">
+          <span>Total:</span>
+          <span id="cart-total">$0 MXN</span>
+        </div>
+        <button id="checkout-btn" class="btn-primary btn-block">Confirmar Pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
