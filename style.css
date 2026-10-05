@@ -1,126 +1,109 @@
 :root {
-  --blue-bg: #0038FF;
-  --dark-blue: #0026B3;
-  --gold: #FFD700;
-  --gold-hover: #E6C200;
-  --chocolate: #3E2723;
-  --white: #FFFFFF;
-  --font-heading: 'Fredoka', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
+  --blue-brand: #0038FF;
+  --bg-color: #F8F9FB;
+  --card-bg: #FFFFFF;
+  --text-dark: #1F2937;
+  --text-gray: #6B7280;
+  --gold: #F59E0B;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body.blue-theme {
-  font-family: var(--font-body);
-  background-color: var(--blue-bg);
-  color: #333;
-  padding-bottom: 80px;
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  padding-bottom: 90px;
 }
 
-/* OVERLAY LOGIN */
-.login-overlay {
-  position: fixed; inset: 0; background: var(--blue-bg);
-  display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
-}
-.login-card {
-  background: var(--white); padding: 35px 25px; border-radius: 30px; text-align: center; max-width: 420px; width: 100%;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-.login-logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--gold); }
-.login-card h2 { font-family: var(--font-heading); font-size: 28px; color: var(--blue-bg); }
-.login-sub { font-size: 14px; color: #666; margin-bottom: 25px; }
+/* ANIMACIONES (EL MOVIMIENTO QUE PEDISTE) */
+.fade-in { animation: fadeIn 0.8s ease forwards; }
+.fade-in-down { animation: fadeInDown 0.6s ease forwards; }
+.fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+.slide-up { animation: slideUp 0.5s ease forwards; }
 
-.input-group { text-align: left; margin-bottom: 15px; }
-.input-group label { font-size: 13px; font-weight: 700; color: #444; display: block; margin-bottom: 5px; }
-.input-group input, .input-group select, .input-group textarea {
-  width: 100%; padding: 12px 15px; border-radius: 15px; border: 2px solid #E0E0E0; font-size: 15px; outline: none; font-family: var(--font-body);
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
 /* HEADER */
 .app-header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 15px 6%; background: var(--white); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin-bottom: 20px;
+  padding: 15px 5%; background: var(--card-bg);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;
 }
-.user-greeting { display: flex; align-items: center; gap: 12px; }
-.header-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-.user-greeting small { color: #777; font-size: 12px; }
-.user-greeting h3 { font-family: var(--font-heading); color: var(--blue-bg); font-size: 20px; }
-.cart-badge-btn { background: var(--gold); border: none; padding: 10px 18px; border-radius: 25px; font-weight: 800; cursor: pointer; color: var(--chocolate); }
+.logo-container { display: flex; align-items: center; gap: 10px; }
+.header-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue-brand); }
+.logo-container h1 { font-size: 18px; font-weight: 800; color: var(--blue-brand); letter-spacing: -0.5px; }
 
-/* HERO BANNER */
-.hero-banner {
-  background: var(--dark-blue); color: white; margin: 0 5% 25px 5%; padding: 25px; border-radius: 25px; text-align: center;
-  border: 2px solid rgba(255,255,255,0.2);
-}
-.badge-gold { background: var(--gold); color: var(--chocolate); padding: 5px 12px; border-radius: 12px; font-weight: 800; font-size: 11px; }
-.hero-banner h2 { font-family: var(--font-heading); font-size: 26px; margin: 10px 0 5px 0; }
+.cart-badge-btn { background: var(--bg-color); border: 1px solid #E5E7EB; padding: 8px 15px; border-radius: 20px; font-weight: 800; font-family: inherit; cursor: pointer; transition: 0.3s; }
+.cart-badge-btn:active { transform: scale(0.95); background: #E5E7EB; }
 
-/* PRODUCTOS Y GRILLAS */
-.app-tab { display: none; padding: 0 5%; }
+/* TABS Y PESTAÑAS */
+.app-tab { display: none; padding: 20px 5%; }
 .app-tab.active { display: block; }
-.section-title-white { font-family: var(--font-heading); color: white; font-size: 26px; margin-bottom: 15px; }
+.section-title { font-size: 24px; font-weight: 900; margin-bottom: 20px; color: var(--text-dark); }
+.subtitle-desc { color: var(--text-gray); margin-bottom: 25px; font-size: 14px; }
 
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.product-card {
-  background: var(--white); padding: 20px; border-radius: 25px; text-align: center; position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; flex-direction: column; justify-content: space-between;
+/* HERO BANNER (BIENVENIDA) */
+.hero-banner {
+  background: var(--blue-brand); color: white; padding: 25px 20px; border-radius: 20px; text-align: center;
+  margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0, 56, 255, 0.2);
 }
-.product-img-box img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
-.card-tag { position: absolute; top: 15px; right: 15px; background: var(--gold); color: var(--chocolate); font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px; }
-.product-card h4 { font-family: var(--font-heading); font-size: 20px; color: var(--blue-bg); margin-bottom: 6px; }
-.product-card p { font-size: 13px; color: #666; margin-bottom: 15px; }
-.price { font-size: 22px; font-weight: 900; color: var(--blue-bg); margin-bottom: 12px; }
+.hero-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 5px; }
+.hero-banner p { font-size: 13px; opacity: 0.9; }
+
+/* GRID PRODUCTOS */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+
+.product-card {
+  background: var(--card-bg); padding: 15px; border-radius: 20px; text-align: center; position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.product-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 15px; margin-bottom: 12px; }
+.card-tag { position: absolute; top: 10px; right: 10px; background: var(--gold); color: white; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 8px; }
+
+.product-card h4 { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 5px; }
+.desc-small { font-size: 11px; color: var(--text-gray); margin-bottom: 10px; line-height: 1.3; }
+.price { font-size: 18px; font-weight: 900; color: var(--blue-brand); display: block; margin-bottom: 15px; }
 
 /* BOTONES */
-.btn-primary { background: var(--blue-bg); color: white; border: none; padding: 12px; border-radius: 18px; font-weight: 800; cursor: pointer; width: 100%; }
-.btn-gold { background: var(--gold); color: var(--chocolate); border: none; padding: 14px; border-radius: 20px; font-weight: 800; cursor: pointer; font-size: 15px; }
+.btn-primary { background: var(--bg-color); color: var(--blue-brand); border: 2px solid var(--blue-brand); padding: 10px; border-radius: 12px; font-weight: 800; font-family: inherit; cursor: pointer; width: 100%; transition: 0.3s; }
+.btn-primary:active { background: var(--blue-brand); color: white; transform: scale(0.95); }
+
+.btn-blue { background: var(--blue-brand); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 800; font-family: inherit; cursor: pointer; transition: 0.3s; }
+.btn-blue:active { transform: scale(0.98); opacity: 0.9; }
 .btn-block { width: 100%; }
 
-/* TARJETAS ANCHAS DE CONTENIDO (SABORES, CARRITO, PERFIL) */
-.wide-card {
-  background: var(--white); padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 25px;
-}
-.wide-card h2 { font-family: var(--font-heading); color: var(--blue-bg); font-size: 26px; margin-bottom: 10px; }
-.wide-card-desc { font-size: 14px; color: #666; margin-bottom: 20px; }
+/* FORMULARIO ARMA TU GALLETA */
+.wide-card { background: var(--card-bg); padding: 25px 20px; border-radius: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.form-section { margin-bottom: 25px; text-align: left; }
+.form-section h3 { font-size: 15px; font-weight: 800; color: var(--blue-brand); margin-bottom: 12px; border-bottom: 2px solid #F3F4F6; padding-bottom: 5px; }
 
-/* SECCIÓN SABORES LIMPIA */
-.flavor-form-wide { margin-bottom: 30px; }
-.submitted-flavors-section h3 { font-size: 16px; color: var(--blue-bg); margin-bottom: 12px; }
-.flavor-list-clean { list-style: none; }
-.flavor-list-clean li { padding: 12px 15px; background: #F4F6FB; border-radius: 12px; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #333; }
-.empty-list-msg { color: #888 !important; font-style: italic; font-weight: 400 !important; }
+.options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.custom-radio, .custom-check { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; padding: 10px; background: var(--bg-color); border-radius: 10px; border: 1px solid #E5E7EB; transition: 0.2s; }
+.custom-radio:hover, .custom-check:hover { border-color: var(--blue-brand); }
+.custom-radio input, .custom-check input { accent-color: var(--blue-brand); transform: scale(1.2); }
 
-/* CARRITO Y OPCIONES DE PAGO */
+/* CARRITO */
 .cart-items-list { margin: 20px 0; }
-.cart-item-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #EEE; font-weight: 700; }
-.total-row { display: flex; justify-content: space-between; font-size: 20px; font-weight: 900; color: var(--blue-bg); margin: 20px 0; }
+.cart-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid #F3F4F6; }
+.cart-item-details { max-width: 70%; }
+.cart-item-title { font-weight: 800; font-size: 15px; color: var(--text-dark); }
+.cart-item-desc { font-size: 12px; color: var(--text-gray); margin-top: 5px; line-height: 1.4; }
+.cart-item-price { font-weight: 900; color: var(--blue-brand); }
+.total-row { display: flex; justify-content: space-between; font-size: 22px; font-weight: 900; color: var(--text-dark); margin: 25px 0; border-top: 2px solid #F3F4F6; padding-top: 15px; }
+.empty-msg { color: var(--text-gray); text-align: center; font-style: italic; padding: 20px; }
 
-.payment-selection-box { background: #F8F9FE; padding: 20px; border-radius: 20px; margin-bottom: 20px; text-align: left; }
-.payment-selection-box h3 { font-size: 15px; color: var(--blue-bg); margin-bottom: 12px; }
-.payment-options { display: flex; gap: 15px; margin-bottom: 15px; }
-.payment-option { flex: 1; background: white; padding: 12px; border-radius: 12px; border: 2px solid #DDD; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; cursor: pointer; }
-
-/* TARJETA SELLOS */
-.text-center { text-align: center; }
-.card-wrapper { max-width: 500px; margin: 20px auto; }
-.real-card-container { position: relative; width: 100%; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-.real-card-bg { width: 100%; display: block; }
-.stamps-overlay {
-  position: absolute; top: 52%; left: 12%; width: 53%; height: 38%;
-  display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 4px;
-}
-.stamp-slot { display: flex; align-items: center; justify-content: center; }
-.stamp-slot.active::after { content: "🍪"; font-size: 22px; }
-.stamps-status-large { margin-top: 20px; font-family: var(--font-heading); color: var(--blue-bg); font-size: 20px; }
-
-/* BOTTOM NAV */
+/* NAVEGACIÓN BOTTOM */
 .bottom-nav {
-  position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: var(--white);
-  display: flex; justify-content: space-around; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 500;
+  position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: var(--card-bg);
+  display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #E5E7EB;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.03); z-index: 500;
 }
-.nav-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; color: #888; cursor: pointer; }
-.nav-item.active { color: var(--blue-bg); font-weight: 800; }
-.nav-icon { font-size: 22px; }
+.nav-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-gray); font-family: inherit; cursor: pointer; transition: 0.3s; }
+.nav-item.active { color: var(--blue-brand); font-weight: 800; transform: translateY(-3px); }
+.nav-icon { font-size: 22px; transition: 0.3s; }
+.nav-item.active .nav-icon { transform: scale(1.1); }
