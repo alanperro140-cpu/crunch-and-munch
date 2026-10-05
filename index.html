@@ -3,217 +3,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crunch & Munch App</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
-  
+  <title>Crunch & Munch | Bakery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="blue-theme">
+<body>
 
-  <!-- ACCESO A LA APP -->
-  <div id="login-overlay" class="login-overlay">
-    <div class="login-card">
-      <img src="logo.jpg" alt="Crunch & Munch Logo" class="login-logo">
-      <h2>Crunch & Munch 🍪</h2>
-      <p class="login-sub">Ingresa para pedir tus galletas recién horneadas y junta sellos.</p>
-
-      <form id="login-form" onsubmit="handleLogin(event)">
-        <div class="input-group">
-          <label>Tu Nombre</label>
-          <input type="text" id="user-name-input" placeholder="Ej. Alan" required>
-        </div>
-        <div class="input-group">
-          <label>Teléfono / WhatsApp</label>
-          <input type="tel" id="user-phone-input" placeholder="Ej. 3310677989" required>
-        </div>
-        <button type="submit" class="btn-gold btn-block">ENTRAR A LA APP</button>
-      </form>
+  <!-- HEADER ESTILO SHOPIFY -->
+  <header class="app-header fade-in-down">
+    <div class="logo-container">
+      <img src="logo.jpg" alt="Crunch & Munch Logo" class="header-logo">
+      <h1>Crunch & Munch</h1>
     </div>
-  </div>
+    <button class="cart-badge-btn" onclick="switchTab('tab-carrito')">
+      🛒 <span id="cart-count">0</span>
+    </button>
+  </header>
 
-  <!-- APLICACIÓN PRINCIPAL -->
-  <div id="app-content" class="app-content" style="display: none;">
+  <!-- CONTENIDO DE LA APP -->
+  <div id="app-content" class="app-content">
 
-    <!-- HEADER FLOTANTE TIPO CRUMBL -->
-    <header class="app-header">
-      <div class="user-greeting">
-        <img src="logo.jpg" alt="Perfil" class="header-avatar">
-        <div>
-          <small>¡Hola!</small>
-          <h3 id="display-user-name">Alan</h3>
-        </div>
-      </div>
-      <button class="cart-badge-btn" onclick="switchTab('tab-carrito')">
-        🛒 <span id="cart-count">0</span>
-      </button>
-    </header>
-
-    <!-- PESTAÑA 1: INICIO Y CATÁLOGO -->
-    <main id="tab-inicio" class="app-tab active">
+    <!-- PESTAÑA 1: CATÁLOGO OFICIAL -->
+    <main id="tab-inicio" class="app-tab active slide-up">
       <div class="hero-banner">
-        <span class="badge-gold">SABOR DE LA SEMANA 🌟</span>
-        <h2>Galletas Horneadas en el Coto</h2>
+        <h2>Recién horneadas en el coto 🍪</h2>
         <p>Crujientes por fuera, suaves y derretidas por dentro.</p>
       </div>
 
-      <h3 class="section-title-white">Menú de Galletas</h3>
+      <h3 class="section-title">Nuestro Menú</h3>
+      
       <div class="products-grid">
-        <div class="product-card">
-          <div class="product-img-box">
-            <img src="logo.jpg" alt="Galleta">
-          </div>
-          <h4>Clásica Chocochips</h4>
-          <p>Masa suave con generosas chispas de chocolate semi-amargo.</p>
-          <span class="price">$35 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Clásica Chocochips', 35)">+ AGREGAR</button>
+        <!-- Producto 1 -->
+        <div class="product-card fade-in">
+          <img src="lotus.jpg" alt="Galleta Lotus">
+          <h4>Galleta Lotus</h4>
+          <span class="price">$45 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Galleta Lotus', 45)">AGREGAR 🛒</button>
         </div>
-
-        <div class="product-card">
-          <div class="product-img-box">
-            <img src="logo.jpg" alt="Galleta">
-          </div>
-          <h4>Doble Chocolate</h4>
-          <p>Masa de cacao intenso cargada con trozos de chocolate blanco.</p>
+        <!-- Producto 2 -->
+        <div class="product-card fade-in">
+          <img src="kinder.jpg" alt="Kinder Bueno">
+          <h4>Kinder Bueno</h4>
+          <span class="price">$45 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Kinder Bueno', 45)">AGREGAR 🛒</button>
+        </div>
+        <!-- Producto 3 -->
+        <div class="product-card fade-in">
+          <img src="oreo.jpg" alt="Oreo">
+          <h4>Galleta Oreo</h4>
           <span class="price">$40 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Doble Chocolate', 40)">+ AGREGAR</button>
+          <button class="btn-primary" onclick="addToCart('Galleta Oreo', 40)">AGREGAR 🛒</button>
         </div>
-
-        <div class="product-card">
-          <div class="product-img-box">
-            <img src="logo.jpg" alt="Galleta">
-          </div>
-          <span class="card-tag">COMBO POPULAR</span>
-          <h4>Caja Sorpresa (6 pzs)</h4>
-          <p>Surtido de nuestros mejores sabores horneados en el día.</p>
-          <span class="price">$200 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Caja Sorpresa (6 pzs)', 200)">+ AGREGAR</button>
+        <!-- Producto 4 -->
+        <div class="product-card fade-in">
+          <img src="nutella.jpg" alt="Nutella">
+          <h4>Galleta Nutella</h4>
+          <span class="price">$40 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Galleta Nutella', 40)">AGREGAR 🛒</button>
+        </div>
+        <!-- Producto 5 -->
+        <div class="product-card fade-in">
+          <img src="clasica.jpg" alt="Clásica">
+          <h4>Clásica Chocochips</h4>
+          <span class="price">$35 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Clásica Chocochips', 35)">AGREGAR 🛒</button>
+        </div>
+        <!-- Producto 6 -->
+        <div class="product-card fade-in">
+          <img src="arandanos.jpg" alt="Arándanos">
+          <h4>Galleta Arándanos</h4>
+          <span class="price">$35 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Galleta Arándanos', 35)">AGREGAR 🛒</button>
+        </div>
+        <!-- Producto 7 -->
+        <div class="product-card fade-in">
+          <img src="smores.jpg" alt="S'mores">
+          <h4>Galleta S'mores</h4>
+          <span class="price">$45 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Galleta S\'mores', 45)">AGREGAR 🛒</button>
+        </div>
+        <!-- Producto 8 -->
+        <div class="product-card fade-in">
+          <div class="card-tag">ESPECIAL 🔥</div>
+          <img src="monchipay.jpg" alt="Monchi Pay">
+          <h4>Monchi Pay</h4>
+          <p class="desc-small">Base de galleta + capa de Nutella + galleta.</p>
+          <span class="price">$55 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Monchi Pay', 55)">AGREGAR 🛒</button>
         </div>
       </div>
     </main>
 
-    <!-- PESTAÑA 2: SOLICITAR SABORES (DISEÑO AMPLIO Y LIMPIO) -->
-    <main id="tab-sabores" class="app-tab">
+    <!-- PESTAÑA 2: ARMA TU GALLETA -->
+    <main id="tab-armar" class="app-tab slide-up">
       <div class="wide-card">
-        <span class="badge-gold">LABORATORIO DE SABORES 🧪</span>
-        <h2>¿Qué sabor de galleta te gustaría probar?</h2>
-        <p class="wide-card-desc">Envíanos tu idea. Si elegimos tu combinación para el menú oficial, ¡te regalamos tu primera galleta!</p>
+        <h2 class="section-title">Arma tu Galleta 🛠️🍪</h2>
+        <p class="subtitle-desc">Crea tu combinación perfecta. ¡Selecciona todo lo que quieras!</p>
 
-        <form id="flavor-form" class="flavor-form-wide" onsubmit="submitFlavor(event)">
-          <div class="input-group">
-            <label>Nombre de tu galleta ideal</label>
-            <input type="text" id="flavor-name" placeholder="Ej. Red Velvet Rellena de Nutella" required>
-          </div>
+        <form id="custom-cookie-form" onsubmit="addCustomCookie(event)">
           
-          <div class="input-group">
-            <label>Ingredientes o Toppings deseados</label>
-            <textarea id="flavor-details" rows="3" placeholder="Describe qué chispas, Rellenos o cubiertas te gustaría que llevara..." required></textarea>
+          <!-- 1. BASE -->
+          <div class="form-section">
+            <h3>1. Elige tu Base (Una opción)</h3>
+            <div class="options-grid">
+              <label class="custom-radio"><input type="radio" name="base" value="Lotus" required> <span>Lotus</span></label>
+              <label class="custom-radio"><input type="radio" name="base" value="Oreo"> <span>Oreo</span></label>
+              <label class="custom-radio"><input type="radio" name="base" value="Chispas"> <span>Chispas Clásica</span></label>
+            </div>
           </div>
 
-          <button type="submit" class="btn-gold btn-block">ENVIAR MI IDEA A CRUNCH & MUNCH 📩</button>
-        </form>
+          <!-- 2. RELLENOS -->
+          <div class="form-section">
+            <h3>2. Rellenos (Puedes elegir varios)</h3>
+            <div class="options-grid">
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Bombón"> <span>Bombón</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Kinder Bueno"> <span>Kinder Bueno</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Oreos"> <span>Oreos</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Nutella"> <span>Nutella</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Pistache"> <span>Pistache</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Arándanos"> <span>Arándanos</span></label>
+              <label class="custom-check"><input type="checkbox" name="relleno" value="Sin Relleno"> <span>Sin Relleno</span></label>
+            </div>
+          </div>
 
-        <div class="submitted-flavors-section">
-          <h3>Sugerencias enviadas por la comunidad:</h3>
-          <ul id="flavor-list" class="flavor-list-clean">
-            <li class="empty-list-msg">Aún no hay sugerencias enviadas. ¡Sé el primero en proponer un sabor!</li>
-          </ul>
-        </div>
+          <!-- 3. CHISPAS / TOPPINGS -->
+          <div class="form-section">
+            <h3>3. Chispas (Puedes elegir varias)</h3>
+            <div class="options-grid">
+              <label class="custom-check"><input type="checkbox" name="chispas" value="Choco Blanco"> <span>Choco Blanco</span></label>
+              <label class="custom-check"><input type="checkbox" name="chispas" value="Choco Oscuro"> <span>Choco Oscuro</span></label>
+              <label class="custom-check"><input type="checkbox" name="chispas" value="Choco Redondo"> <span>Choco Redondo</span></label>
+            </div>
+          </div>
+
+          <!-- 4. EXTRA -->
+          <div class="form-section">
+            <h3>4. ¿Toque Final? (Opcional)</h3>
+            <div class="options-grid">
+              <label class="custom-check"><input type="checkbox" name="extra" value="Nieve de Vainilla"> <span>Con Nieve de Vainilla 🍨 (+$20)</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-blue btn-block" style="margin-top: 20px; font-size: 16px;">
+            AGREGAR MI CREACIÓN AL CARRITO ✨
+          </button>
+        </form>
       </div>
     </main>
 
-    <!-- PESTAÑA 3: CARRITO Y PAGO METÓDICO -->
-    <main id="tab-carrito" class="app-tab">
+    <!-- PESTAÑA 3: CARRITO -->
+    <main id="tab-carrito" class="app-tab slide-up">
       <div class="wide-card">
-        <h2>Tu Carrito de Compras 🛒</h2>
+        <h2 class="section-title">Tu Pedido 🛒</h2>
+        
         <div id="cart-items" class="cart-items-list">
-          <p class="empty-msg">Tu carrito está vacío</p>
+          <p class="empty-msg">Tu carrito está vacío. ¡Ve a agregar unas deliciosas galletas!</p>
         </div>
 
         <div id="cart-summary-box" style="display: none;">
           <div class="total-row">
-            <span>Total a pagar:</span>
+            <span>Total:</span>
             <span id="cart-total">$0 MXN</span>
           </div>
 
-          <!-- MÉTODO DE PAGO CRUMBL STYLE -->
-          <div class="payment-selection-box">
-            <h3>Selecciona tu método de pago:</h3>
-            
-            <div class="payment-options">
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="efectivo" onchange="togglePaymentOptions('efectivo')" checked>
-                <span>💵 Efectivo</span>
-              </label>
-
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="tarjeta" onchange="togglePaymentOptions('tarjeta')">
-                <span>💳 Tarjeta / Pago Digital</span>
-              </label>
-            </div>
-
-            <!-- SUB-OPCIÓN EFECTIVO -->
-            <div id="efectivo-details" class="payment-details-panel">
-              <label>¿Con cuánto vas a pagar? (Para llevarte cambio exacto)</label>
-              <input type="text" id="efectivo-monto" placeholder="Ej. Pagaré con un billete de $200">
-            </div>
-
-            <!-- SUB-OPCIÓN DIGITAL -->
-            <div id="tarjeta-details" class="payment-details-panel" style="display: none;">
-              <label>Elige la plataforma digital:</label>
-              <select id="digital-platform-select">
-                <option value="PayPal">PayPal</option>
-                <option value="OXXO Pay">OXXO Pay (Depósito en tienda)</option>
-                <option value="Tarjeta de Débito / Crédito">Tarjeta de Débito / Crédito</option>
-                <option value="Transferencia SPEI">Transferencia Bancaria SPEI</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="btn-gold btn-block" onclick="processCheckout()">CONFIRMAR Y ENVIAR PEDIDO 🚀</button>
+          <button class="btn-blue btn-block" onclick="processCheckout()">ENVIAR PEDIDO A WHATSAPP 🚀</button>
         </div>
       </div>
     </main>
-
-    <!-- PESTAÑA 4: MI PERFIL Y TARJETA DE SELLOS -->
-    <main id="tab-perfil" class="app-tab">
-      <div class="wide-card text-center">
-        <h2>Mi Tarjeta de Cliente Frecuente 🎁</h2>
-        <p>Acumula 10 sellos digitales en tus compras para ganar una Cajita de Galletas Sorpresa GRATIS.</p>
-
-        <div class="card-wrapper">
-          <div class="real-card-container">
-            <img src="tarjeta.png" alt="Tarjeta Oficial Crunch & Munch" class="real-card-bg">
-            <div class="stamps-overlay" id="stamps-grid"></div>
-          </div>
-          <h3 id="stamps-status-text" class="stamps-status-large">0 / 10 SELLOS ACUMULADOS</h3>
-        </div>
-      </div>
-    </main>
-
-    <!-- BARRA INFERIOR DE NAVEGACIÓN -->
-    <nav class="bottom-nav">
-      <button class="nav-item active" onclick="switchTab('tab-inicio', this)">
-        <span class="nav-icon">🍪</span>
-        <small>Menú</small>
-      </button>
-      <button class="nav-item" onclick="switchTab('tab-sabores', this)">
-        <span class="nav-icon">💡</span>
-        <small>Sabores</small>
-      </button>
-      <button class="nav-item" onclick="switchTab('tab-carrito', this)">
-        <span class="nav-icon">🛒</span>
-        <small>Carrito</small>
-      </button>
-      <button class="nav-item" onclick="switchTab('tab-perfil', this)">
-        <span class="nav-icon">🎁</span>
-        <small>Mi Tarjeta</small>
-      </button>
-    </nav>
 
   </div>
+
+  <!-- BARRA INFERIOR DE NAVEGACIÓN -->
+  <nav class="bottom-nav fade-in-up">
+    <button class="nav-item active" onclick="switchTab('tab-inicio', this)">
+      <span class="nav-icon">🍪</span>
+      <small>Menú</small>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-armar', this)">
+      <span class="nav-icon">🛠️</span>
+      <small>Crear</small>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-carrito', this)">
+      <span class="nav-icon">🛒</span>
+      <small>Carrito</small>
+    </button>
+  </nav>
 
   <script src="script.js"></script>
 </body>
