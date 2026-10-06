@@ -33,7 +33,6 @@ function addToCart(name, price) {
 // Agregar Galletas con Selector de Tamaño (Clásica y Arándanos)
 function addSizedToCart(baseName, selectId) {
   const selectElement = document.getElementById(selectId);
-  // El valor del select viene como "Tamaño|Precio", ej: "Grande|25" o "Mini|15"
   const [size, priceStr] = selectElement.value.split('|');
   const price = parseInt(priceStr);
   const fullName = `${baseName} (${size})`;
@@ -79,10 +78,10 @@ function addCustomCookie(e) {
     rellenosFinales = ["Sin Relleno"];
   }
 
-  // Costo Base de Galleta Creada (La ajusté a $30 como base para que cuadre con tu menú, pero la puedes cambiar)
+  // Costo Base de Galleta Creada = $30
   let price = 30; 
   if (extraText) {
-    price += 5; // Nieve ahora vale 5 pesos
+    price += 5; // Nieve de vainilla a $5
   }
 
   let detailsArr = [];
@@ -133,9 +132,17 @@ function updateCartUI() {
   }
 }
 
-// Botón de WhatsApp
+// Envío a WhatsApp con Validación de Dirección
 function processCheckout() {
   if (cart.length === 0) return;
+
+  const addressInput = document.getElementById("user-address").value.trim();
+  
+  if (addressInput === "") {
+    alert("📍 Por favor, ingresa tu dirección de entrega (Coto y Casa) para poder llevarte tu pedido.");
+    document.getElementById("user-address").focus();
+    return;
+  }
 
   let mensaje = `¡Hola Crunch & Munch! 🍪\nQuiero confirmar el siguiente pedido:\n\n`;
   
@@ -147,15 +154,17 @@ function processCheckout() {
   });
 
   const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+  
   mensaje += `\n*TOTAL A PAGAR: $${totalPrice} MXN*`;
+  mensaje += `\n\n📍 *Dirección de entrega:* ${addressInput}`;
 
-  // El nuevo número de WhatsApp solicitado
   const tuNumeroWhatsApp = "523316939960"; 
   const urlWhatsApp = `https://wa.me/${tuNumeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   
   window.open(urlWhatsApp, "_blank");
 
   cart = [];
+  document.getElementById("user-address").value = "";
   updateCartUI();
   switchTab('tab-inicio');
 }
