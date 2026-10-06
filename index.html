@@ -3,108 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crunch & Munch | Bakery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <title>Crunch & Munch | Bakery Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HEADER ESTILO SHOPIFY -->
+  <!-- BARRA DE ANUNCIOS -->
+  <div class="top-bar">
+    <div class="marquee-text">
+      <span>✦ ENVÍO DISPONIBLE EN EL COTO ✦ HORNEADAS AL MOMENTO ✦ CALIDAD PREMIUM ✦ INGREDIENTES EXCLUSIVOS ✦</span>
+    </div>
+  </div>
+
+  <!-- HEADER ELEGANTE -->
   <header class="app-header fade-in-down">
     <div class="logo-container">
       <img src="logo.jpg" alt="Crunch & Munch Logo" class="header-logo">
       <h1>Crunch & Munch</h1>
     </div>
     <button class="cart-badge-btn" onclick="switchTab('tab-carrito')">
-      🛒 <span id="cart-count">0</span>
+      MI ORDEN (<span id="cart-count">0</span>)
     </button>
   </header>
 
-  <!-- CONTENIDO DE LA APP -->
   <div id="app-content" class="app-content">
 
     <!-- PESTAÑA 1: CATÁLOGO OFICIAL -->
     <main id="tab-inicio" class="app-tab active slide-up">
-      <div class="hero-banner">
-        <h2>Recién horneadas en el coto 🍪</h2>
-        <p>Crujientes por fuera, suaves y derretidas por dentro.</p>
+      
+      <!-- BANNER ESPECTACULAR CON TU IMAGEN DE IA -->
+      <div class="hero-premium" style="background-image: url('IA clasica.jpg');">
+        <div class="hero-overlay">
+          <h2>El Arte de la Galleta</h2>
+          <p>Crujientes por fuera, con un centro suave y derretido que te hará volver por más.</p>
+        </div>
       </div>
 
-      <h3 class="section-title">Nuestro Menú</h3>
+      <div class="section-header">
+        <h3 class="section-title">Nuestras Creaciones</h3>
+        <div class="divider"></div>
+      </div>
       
       <div class="products-grid">
-        <!-- Producto 1 -->
+        
+        <!-- PRODUCTOS DE $30 -->
         <div class="product-card fade-in">
-          <img src="lotus.jpg" alt="Galleta Lotus">
-          <h4>Galleta Lotus</h4>
-          <span class="price">$45 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Galleta Lotus', 45)">AGREGAR 🛒</button>
+          <div class="img-wrapper"><img src="lotus.jpg" alt="Galleta Lotus"></div>
+          <h4>Lotus</h4>
+          <span class="price">$30 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Lotus', 30)">AGREGAR AL CARRITO</button>
         </div>
-        <!-- Producto 2 -->
+
         <div class="product-card fade-in">
-          <img src="kinder.jpg" alt="Kinder Bueno">
+          <div class="img-wrapper"><img src="kinder.jpg" alt="Kinder Bueno"></div>
           <h4>Kinder Bueno</h4>
-          <span class="price">$45 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Kinder Bueno', 45)">AGREGAR 🛒</button>
+          <span class="price">$30 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Kinder Bueno', 30)">AGREGAR AL CARRITO</button>
         </div>
-        <!-- Producto 3 -->
+
         <div class="product-card fade-in">
-          <img src="oreo.jpg" alt="Oreo">
-          <h4>Galleta Oreo</h4>
+          <div class="img-wrapper"><img src="oreo.jpg" alt="Oreo"></div>
+          <h4>Oreo</h4>
+          <span class="price">$30 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Oreo', 30)">AGREGAR AL CARRITO</button>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="img-wrapper"><img src="smores.jpg" alt="S'mores"></div>
+          <h4>S'mores</h4>
+          <span class="price">$30 MXN</span>
+          <button class="btn-primary" onclick="addToCart('S\\'mores', 30)">AGREGAR AL CARRITO</button>
+        </div>
+
+        <!-- PRODUCTOS DE $40 -->
+        <div class="product-card fade-in">
+          <div class="img-wrapper"><img src="nutella.jpg" alt="Nutella"></div>
+          <h4>Nutella</h4>
           <span class="price">$40 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Galleta Oreo', 40)">AGREGAR 🛒</button>
+          <button class="btn-primary" onclick="addToCart('Nutella', 40)">AGREGAR AL CARRITO</button>
         </div>
-        <!-- Producto 4 -->
-        <div class="product-card fade-in">
-          <img src="nutella.jpg" alt="Nutella">
-          <h4>Galleta Nutella</h4>
-          <span class="price">$40 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Galleta Nutella', 40)">AGREGAR 🛒</button>
-        </div>
-        <!-- Producto 5 -->
-        <div class="product-card fade-in">
-          <img src="clasica.jpg" alt="Clásica">
-          <h4>Clásica Chocochips</h4>
-          <span class="price">$35 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Clásica Chocochips', 35)">AGREGAR 🛒</button>
-        </div>
-        <!-- Producto 6 -->
-        <div class="product-card fade-in">
-          <img src="arandanos.jpg" alt="Arándanos">
-          <h4>Galleta Arándanos</h4>
-          <span class="price">$35 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Galleta Arándanos', 35)">AGREGAR 🛒</button>
-        </div>
-        <!-- Producto 7 -->
-        <div class="product-card fade-in">
-          <img src="smores.jpg" alt="S'mores">
-          <h4>Galleta S'mores</h4>
-          <span class="price">$45 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Galleta S\'mores', 45)">AGREGAR 🛒</button>
-        </div>
-        <!-- Producto 8 -->
-        <div class="product-card fade-in">
-          <div class="card-tag">ESPECIAL 🔥</div>
-          <img src="monchipay.jpg" alt="Monchi Pay">
+
+        <div class="product-card fade-in premium-highlight">
+          <div class="card-tag">ESPECIAL</div>
+          <div class="img-wrapper"><img src="monchipay.jpg" alt="Monchi Pay"></div>
           <h4>Monchi Pay</h4>
           <p class="desc-small">Base de galleta + capa de Nutella + galleta.</p>
-          <span class="price">$55 MXN</span>
-          <button class="btn-primary" onclick="addToCart('Monchi Pay', 55)">AGREGAR 🛒</button>
+          <span class="price">$40 MXN</span>
+          <button class="btn-primary" onclick="addToCart('Monchi Pay', 40)">AGREGAR AL CARRITO</button>
         </div>
+
+        <!-- PRODUCTOS CON SELECTOR DE TAMAÑO ($25 / $15) -->
+        <div class="product-card fade-in">
+          <div class="img-wrapper"><img src="clasica.jpg" alt="Clásica"></div>
+          <h4>Clásica Chocochips</h4>
+          <select id="size-clasica" class="size-selector">
+            <option value="Grande|25">Grande - $25 MXN</option>
+            <option value="Mini|15">Mini - $15 MXN</option>
+          </select>
+          <button class="btn-primary mt-2" onclick="addSizedToCart('Clásica', 'size-clasica')">AGREGAR AL CARRITO</button>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="img-wrapper"><img src="arandanos.jpg" alt="Arándanos"></div>
+          <h4>Arándanos</h4>
+          <select id="size-arandanos" class="size-selector">
+            <option value="Grande|25">Grande - $25 MXN</option>
+            <option value="Mini|15">Mini - $15 MXN</option>
+          </select>
+          <button class="btn-primary mt-2" onclick="addSizedToCart('Arándanos', 'size-arandanos')">AGREGAR AL CARRITO</button>
+        </div>
+
       </div>
     </main>
 
     <!-- PESTAÑA 2: ARMA TU GALLETA -->
     <main id="tab-armar" class="app-tab slide-up">
       <div class="wide-card">
-        <h2 class="section-title">Arma tu Galleta 🛠️🍪</h2>
-        <p class="subtitle-desc">Crea tu combinación perfecta. ¡Selecciona todo lo que quieras!</p>
+        <h2 class="section-title">Arma tu Galleta</h2>
+        <div class="divider" style="margin: 0 auto 20px auto;"></div>
+        <p class="subtitle-desc text-center">Diseña tu galleta desde cero con tus ingredientes favoritos.</p>
 
-        <form id="custom-cookie-form" onsubmit="addCustomCookie(event)">
+        <form id="custom-cookie-form" onsubmit="addCustomCookie(event)" class="premium-form">
           
-          <!-- 1. BASE -->
           <div class="form-section">
-            <h3>1. Elige tu Base (Una opción)</h3>
+            <h3>1. Base de Galleta</h3>
             <div class="options-grid">
               <label class="custom-radio"><input type="radio" name="base" value="Lotus" required> <span>Lotus</span></label>
               <label class="custom-radio"><input type="radio" name="base" value="Oreo"> <span>Oreo</span></label>
@@ -112,9 +135,8 @@
             </div>
           </div>
 
-          <!-- 2. RELLENOS -->
           <div class="form-section">
-            <h3>2. Rellenos (Puedes elegir varios)</h3>
+            <h3>2. Rellenos (Selección múltiple)</h3>
             <div class="options-grid">
               <label class="custom-check"><input type="checkbox" name="relleno" value="Bombón"> <span>Bombón</span></label>
               <label class="custom-check"><input type="checkbox" name="relleno" value="Kinder Bueno"> <span>Kinder Bueno</span></label>
@@ -126,9 +148,8 @@
             </div>
           </div>
 
-          <!-- 3. CHISPAS / TOPPINGS -->
           <div class="form-section">
-            <h3>3. Chispas (Puedes elegir varias)</h3>
+            <h3>3. Chispas (Selección múltiple)</h3>
             <div class="options-grid">
               <label class="custom-check"><input type="checkbox" name="chispas" value="Choco Blanco"> <span>Choco Blanco</span></label>
               <label class="custom-check"><input type="checkbox" name="chispas" value="Choco Oscuro"> <span>Choco Oscuro</span></label>
@@ -136,17 +157,14 @@
             </div>
           </div>
 
-          <!-- 4. EXTRA -->
           <div class="form-section">
-            <h3>4. ¿Toque Final? (Opcional)</h3>
+            <h3>4. Toque Especial</h3>
             <div class="options-grid">
-              <label class="custom-check"><input type="checkbox" name="extra" value="Nieve de Vainilla"> <span>Con Nieve de Vainilla 🍨 (+$20)</span></label>
+              <label class="custom-check highlight-check"><input type="checkbox" name="extra" value="Nieve de Vainilla"> <span>Nieve de Vainilla (+ $5)</span></label>
             </div>
           </div>
 
-          <button type="submit" class="btn-blue btn-block" style="margin-top: 20px; font-size: 16px;">
-            AGREGAR MI CREACIÓN AL CARRITO ✨
-          </button>
+          <button type="submit" class="btn-blue btn-block">CREAR Y AGREGAR AL CARRITO</button>
         </form>
       </div>
     </main>
@@ -154,38 +172,35 @@
     <!-- PESTAÑA 3: CARRITO -->
     <main id="tab-carrito" class="app-tab slide-up">
       <div class="wide-card">
-        <h2 class="section-title">Tu Pedido 🛒</h2>
+        <h2 class="section-title">Resumen de Orden</h2>
+        <div class="divider" style="margin: 0 auto 20px auto;"></div>
         
         <div id="cart-items" class="cart-items-list">
-          <p class="empty-msg">Tu carrito está vacío. ¡Ve a agregar unas deliciosas galletas!</p>
+          <p class="empty-msg">Tu bolsa de compras está vacía.</p>
         </div>
 
         <div id="cart-summary-box" style="display: none;">
           <div class="total-row">
-            <span>Total:</span>
+            <span>Total a pagar:</span>
             <span id="cart-total">$0 MXN</span>
           </div>
-
-          <button class="btn-blue btn-block" onclick="processCheckout()">ENVIAR PEDIDO A WHATSAPP 🚀</button>
+          <button class="btn-blue btn-block" onclick="processCheckout()">CONFIRMAR POR WHATSAPP</button>
         </div>
       </div>
     </main>
 
   </div>
 
-  <!-- BARRA INFERIOR DE NAVEGACIÓN -->
+  <!-- NAVEGACIÓN INFERIOR SIN EMOJIS -->
   <nav class="bottom-nav fade-in-up">
     <button class="nav-item active" onclick="switchTab('tab-inicio', this)">
-      <span class="nav-icon">🍪</span>
-      <small>Menú</small>
+      <span class="nav-icon-text">CATÁLOGO</span>
     </button>
     <button class="nav-item" onclick="switchTab('tab-armar', this)">
-      <span class="nav-icon">🛠️</span>
-      <small>Crear</small>
+      <span class="nav-icon-text">ARMA TU GALLETA</span>
     </button>
     <button class="nav-item" onclick="switchTab('tab-carrito', this)">
-      <span class="nav-icon">🛒</span>
-      <small>Carrito</small>
+      <span class="nav-icon-text">MI ORDEN</span>
     </button>
   </nav>
 
