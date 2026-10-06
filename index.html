@@ -9,14 +9,14 @@
 </head>
 <body>
 
-  <!-- BARRA DE ANUNCIOS -->
+  <!-- BARRA DE ANUNCIOS SUPERIOR -->
   <div class="top-bar">
     <div class="marquee-text">
       <span>✦ ENVÍO DISPONIBLE EN EL COTO ✦ HORNEADAS AL MOMENTO ✦ CALIDAD PREMIUM ✦ INGREDIENTES EXCLUSIVOS ✦</span>
     </div>
   </div>
 
-  <!-- HEADER ELEGANTE -->
+  <!-- HEADER -->
   <header class="app-header fade-in-down">
     <div class="logo-container">
       <img src="logo.jpg" alt="Crunch & Munch Logo" class="header-logo">
@@ -27,12 +27,13 @@
     </button>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <div id="app-content" class="app-content">
 
     <!-- PESTAÑA 1: CATÁLOGO OFICIAL -->
     <main id="tab-inicio" class="app-tab active slide-up">
       
-      <!-- BANNER ESPECTACULAR CON TU IMAGEN DE IA -->
+      <!-- BANNER PRINCIPAL CON IMAGEN DE IA -->
       <div class="hero-premium" style="background-image: url('IA clasica.jpg');">
         <div class="hero-overlay">
           <h2>El Arte de la Galleta</h2>
@@ -73,7 +74,7 @@
           <div class="img-wrapper"><img src="smores.jpg" alt="S'mores"></div>
           <h4>S'mores</h4>
           <span class="price">$30 MXN</span>
-          <button class="btn-primary" onclick="addToCart('S\\'mores', 30)">AGREGAR AL CARRITO</button>
+          <button class="btn-primary" onclick="addToCart('S\'mores', 30)">AGREGAR AL CARRITO</button>
         </div>
 
         <!-- PRODUCTOS DE $40 -->
@@ -184,6 +185,13 @@
             <span>Total a pagar:</span>
             <span id="cart-total">$0 MXN</span>
           </div>
+
+          <!-- CAMPO DE DIRECCIÓN DE ENTREGA -->
+          <div class="delivery-info">
+            <label for="user-address">📍 Dirección de entrega (Coto / Casa):</label>
+            <input type="text" id="user-address" placeholder="Ej. Casa 45, Coto Los Pinos..." required>
+          </div>
+
           <button class="btn-blue btn-block" onclick="processCheckout()">CONFIRMAR POR WHATSAPP</button>
         </div>
       </div>
@@ -191,7 +199,7 @@
 
   </div>
 
-  <!-- NAVEGACIÓN INFERIOR SIN EMOJIS -->
+  <!-- NAVEGACIÓN INFERIOR -->
   <nav class="bottom-nav fade-in-up">
     <button class="nav-item active" onclick="switchTab('tab-inicio', this)">
       <span class="nav-icon-text">CATÁLOGO</span>
